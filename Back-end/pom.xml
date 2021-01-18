@@ -7,7 +7,7 @@
     <version>1.0.1</version>
     <packaging>war</packaging>
 
-    <name>ca3-backend</name>
+    <name>soloEksamen-backend</name>
 
 <!--Deployed version-->
 <!--    <properties>
