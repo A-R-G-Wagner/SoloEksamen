@@ -1,22 +1,26 @@
 import React from "react";
-import { Nav, NavItem } from "react-bootstrap";
+import { Nav, NavItem, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 
 const UserNavigator = () => {
   return (
     <>
-    <NavItem href="/UserSite">
-      <Nav.Link as={Link} to="/UserSite">
-        User
-      </Nav.Link>
-    </NavItem>
-
-    <NavItem href="/Holidays">
-    <Nav.Link as={Link} to="/Holidays">
-        Helligdage
-    </Nav.Link>
-  </NavItem>
-  </>
+      
+      <NavItem>
+        <NavDropdown title="Sales" id="basic-nav-dropdown">
+          <NavDropdown.Item as={Link} to="/ViewContacts">
+            View Contacts
+                </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/NewContact">
+            New Contact
+                </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/SingleContact">
+            View Single Contact
+                </NavDropdown.Item>
+        </NavDropdown>
+      </NavItem>
+    </>
   );
 };
 

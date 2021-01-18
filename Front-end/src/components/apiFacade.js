@@ -45,6 +45,15 @@ const logout = () => {
 
 function ApiFacade() {
 
+    const newContact = (name, jobtitle, company, phone, email) => {
+
+        const options = makeOptions("POST", true, { name: name, jobtitle: jobtitle, company: company, phone: phone, email: email })
+
+        return fetch("http://localhost:8080/jpareststarter/api/contact", options);
+    }
+
+
+
     const login = (user, password) => {
         const options = makeOptions("POST", true, { username: user, password: password });
         return fetch(URL + "/api/login", options)
@@ -88,7 +97,8 @@ function ApiFacade() {
         logout,
         fetchData,
         getUserName,
-        getRoles
+        getRoles,
+        newContact
     }
 }
 const facade = ApiFacade();

@@ -7,3 +7,5 @@ export const UserUrlUserCount = "http://localhost:8080/jpareststarter/api/user/u
 export const DailyFunUrl = "http://localhost:8080/jpareststarter/api/dailyfun";
 
 export const HolidaysUrl = "http://localhost:8080/jpareststarter/api/holidays";
+
+export const AllContacts = "http://localhost:8080/jpareststarter/api/contact/all";

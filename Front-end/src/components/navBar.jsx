@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 import Login from "./login";
 import DailyFun from "./dailyFun";
 import Home from "./home";
@@ -9,7 +9,9 @@ import facade from "./apiFacade";
 import ValidateRoleSite from "./validateRoleSite";
 import UserSite from "./userSite";
 import AdminSite from "./adminSite";
-import Holidays from "./holiday";
+import ViewContacts from "./ViewContacts";
+import NewContact from "./NewContact";
+import SingleContact from "./singleContact";
 
 const NavBarIO = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -33,7 +35,7 @@ const Header = (props) => {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           
           <Navbar.Brand as={Link} to="/">
-            CA-3 Gruppe 5
+            CPH-AW116
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -54,14 +56,7 @@ const Header = (props) => {
                 </Nav.Link>
               </NavItem>
               <ValidateRoleSite loggedIn={props.loggedIn} />
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/">
-                  Home
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/Readme">
-                  Readme
-                </NavDropdown.Item>
-              </NavDropdown>
+              
             </Nav>
             <Nav>
               <NavItem href="/Login">
@@ -85,7 +80,9 @@ const Content = (props) => {
       <Route path="/DailyFun" component={DailyFun} />
       <Route path="/AdminSite" component={AdminSite} />
       <Route path="/UserSite" component={UserSite} />
-      <Route path="/Holidays" component={Holidays} />
+      <Route path="/ViewContacts" component={ViewContacts} />
+      <Route path="/NewContact" component={NewContact} />
+      <Route path="/SingleContact" component={SingleContact} />
       <Route path="/Login">
         <Login setLoggedIn={props.setLoggedIn} loggedIn={props.loggedIn} />
       </Route>

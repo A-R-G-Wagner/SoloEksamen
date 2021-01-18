@@ -14,15 +14,19 @@ const Holidays = () => {
             .then((res) => res.json())
             .then((data) => {
                 setHolidays(data);
+                console.log("data ",data);
+                
             });
     }, []);
-    const TableBody = () => holidays.map((h) => (
+    console.log("Holidays: ",holidays);
+    const TableBody = holidays.map((h) => {
         <tr key={h.date.toString()}>
             <td>{h.date}</td>
             <td>{h.localName}</td>
             <td>{h.type}</td>
         </tr>
-    ))
+        
+    })
     return (
         <div>
             <h3>Danske helligdage</h3>
@@ -34,7 +38,7 @@ const Holidays = () => {
                         <th style={{width: styles.width}}>Omfang</th>
                     </tr>
                 </thead>
-                <TableBody />
+                {TableBody}
 
             </table>
         </div>
