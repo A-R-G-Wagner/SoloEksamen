@@ -28,7 +28,7 @@ const Contacts = () => {
             <td>{c.phone}</td>
             <td>{c.email}</td>
         </tr>
-        console.log("Inde i TableBody: ", ...newContact,  c.name);
+        console.log("Inde i TableBody: ", c.name);
     })
     return (
         <div>

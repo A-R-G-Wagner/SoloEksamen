@@ -71,7 +71,13 @@ public class ContactResource {
     }
 
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String updateContact(@PathParam("id") long id, String contact) {
+        ContactDTO c = GSON.fromJson(contact, ContactDTO.class);
+        c.setId(id);
+        ContactDTO uc = FACADE.editContact(c);
+        return GSON.toJson(uc);
     }
 }

@@ -81,37 +81,24 @@ public class ContactFacade {
         return c;
     }
 
-    //    
-    //    public List<Contact> getAllContacts(){
-    //        List<ContactDTO> ContactDTOList = new ArrayList<>();
-    //        
-    //        EntityManager em = emf.createEntityManager();
-    //        Contact contact = em.find(Contact.class);
-    //        List<Contact> eventList = contact.getCalendarList().get(0).getEventList();
-    //        
-    //        for (Event event : eventList) {
-    //            eventDTOList.add(new EventDTO(event));
-    //        }
-    //        return eventDTOList;
-    //        
-    //    }
-//    public List<Opportunity> findActiveOpportunities() {
-//        EntityManager em = emf.createEntityManager();
-//        TypedQuery<Opportunity> q = em.createQuery("SELECT o FROM Opportunity o WHERE o.opportunityStatus = Active", Opportunity.class);
-//        List<Opportunity> l = q.getResultList();
-//
-//        return l;
-//    }
-//    public List<ContactDTO> getAllContacts(){
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//           TypedQuery<Contact> q = em.createQuery("SELECT c FROM Contant c", Contact.class);
-//            return new ContactsDTO(q.getResultList());
-//            System.out.println("/n/n/nResultlist: " + q.getResultList());
-//           
-//        }finally {
-//            em.close();
-//        }
-//        return res;
-//    }
+    public ContactDTO editContact(ContactDTO c) {
+        EntityManager em = emf.createEntityManager();
+        Contact c2 = em.find(Contact.class, c.getId());
+
+        c2.setName(c.getName());
+        c2.setJobtitle(c.getJobtitle());
+        c2.setCompany(c.getCompany());
+        c2.setPhone(c.getPhone());
+        c2.setEmail(c.getEmail());
+
+        try {
+            em.getTransaction().begin();
+            em.merge(c2);
+            em.getTransaction().commit();
+            return new ContactDTO(c2);
+        } finally {
+            em.close();
+        }
+    }
+
 }//class

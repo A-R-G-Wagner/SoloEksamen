@@ -4,36 +4,35 @@ import facade from "./apiFacade";
 
 const SelectContact = () => {
 
-    const init = { select: "" };
-    const [selectContract, setselectContract] = useState(init);
+    const [selectContact, setselectContract] = useState();
+    
 
     const handleChange = (event) => {
         const target = event.target;
         const value = target.value;
-        const name = target.name;
-        setNewContact({ ...newContact, [name]: value })
+        setselectContract(value)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        window.alert("New Contact added: ", JSON.stringify(newContact))
-        facade.newContact(newContact.name, newContact.jobtitle, newContact.company, newContact.phone, newContact.email);
+        console.log("Brugeren valgte: ", {selectContact});
     }
 
-    const Selected = () => {
+    
+return (
+    <>
+        <div>
 
-        return ();
-    }
-
-    return (
-        <>
-            <div>
-                <h3>Select Single Contact</h3><br />
-                <Form onChange={handleChange} onSubmit={handleSubmit}>
-                    <input placeholder="Contact ID" name="id" /><br />
-                    <br />
+            <h3>Select Single Contact</h3><br />
+            <Form onChange={handleChange} onSubmit={handleSubmit}>
+                <input placeholder="Contact ID" name="id" /><br />
+                <br />
                 <Button variant="dark" type="submit">Create Contact</Button>
+            </Form>
         </div>
-                <Selected />
-        </>
-    )}
+        
+    </>
+)
+}
+
+export default SelectContact;
