@@ -1,5 +1,7 @@
 # Alex Wagner Eksamen 
 <br>
+# Der er ikke deployet til Droplet
+<br>
 # Back-end indeholder netbeans projektet<br>
 utils => SetupTestUsers indeholder startup data til databasen(brugere, roller og relations)<br>
 Entity klasserne 'user' og 'role' er skaber grundlag for login funktionalitet.<br>
